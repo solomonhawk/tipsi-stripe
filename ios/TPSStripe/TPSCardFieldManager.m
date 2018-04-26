@@ -51,6 +51,7 @@ RCT_EXPORT_VIEW_PROPERTY(cvcPlaceholder, NSString);
 RCT_EXPORT_VIEW_PROPERTY(enabled, BOOL);
 
 RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock);
+RCT_EXPORT_VIEW_PROPERTY(onEndEditing, RCTBubblingEventBlock);
 
 RCT_CUSTOM_VIEW_PROPERTY(params, NSDictionary, TPSCardField)
 {

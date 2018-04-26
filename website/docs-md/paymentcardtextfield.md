@@ -24,6 +24,7 @@ It’s designed to fit on a single line.
 | enabled&nbsp;(Android) | Bool | Enable/disable selecting or editing the field. Useful when submitting card details to Stripe |
 | onChange | Func | This function will be called each input change |
 | onParamsChange(valid&nbsp;Bool,&nbsp;params:&nbsp;Object) | Func | This function will be called each input change, it takes two arguments |
+| onEndEditing(valid&nbsp;Bool,&nbsp;params:&nbsp;Object) | Func | This function will be called after the user's focus moves outside of the combined inputs |
 
 **onParamsChange params**
 

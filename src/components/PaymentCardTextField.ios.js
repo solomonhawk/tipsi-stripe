@@ -38,6 +38,7 @@ function getNativeComponent(name) {
       params: true,
       keyboardAppearance: true,
       onChange: true,
+      onEndEditing: true,
     },
   })
 
@@ -68,11 +69,15 @@ export default class PaymentCardTextField extends Component {
     keyboardAppearance: PropTypes.oneOf(['default', 'light', 'dark']),
 
     onChange: PropTypes.func,
+    onParamsChange: PropTypes.func,
     onValueChange: PropTypes.func,
+    onEndEditing: PropTypes.func,
   }
 
   static defaultProps = {
     ...View.defaultProps,
+    onParamsChange: () => {},
+    onEndEditing: () => {},
   }
 
   valid = false // eslint-disable-line react/sort-comp
@@ -107,6 +112,18 @@ export default class PaymentCardTextField extends Component {
 
   handlePress = () => {
     this.focus()
+  }
+
+  handleEndEditing = (event) => {
+    const { onEndEditing } = this.props
+    const { nativeEvent } = event
+
+    if (onEndEditing) {
+      onEndEditing(
+        nativeEvent.valid,
+        nativeEvent.params
+      )
+    }
   }
 
   handleChange = (event) => {
@@ -177,6 +194,7 @@ export default class PaymentCardTextField extends Component {
           cvcPlaceholder={cvcPlaceholder}
           keyboardAppearance={keyboardAppearance}
           onChange={this.handleChange}
+          onEndEditing={this.handleEndEditing}
         />
       </TouchableWithoutFeedback>
     )
