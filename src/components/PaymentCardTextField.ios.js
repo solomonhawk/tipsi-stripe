@@ -69,12 +69,14 @@ export default class PaymentCardTextField extends Component {
     keyboardAppearance: PropTypes.oneOf(['default', 'light', 'dark']),
 
     onChange: PropTypes.func,
+    onParamsChange: PropTypes.func,
     onValueChange: PropTypes.func,
     onEndEditing: PropTypes.func,
   }
 
   static defaultProps = {
     ...View.defaultProps,
+    onParamsChange: () => {},
     onEndEditing: () => {},
   }
 

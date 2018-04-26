@@ -33,12 +33,14 @@ export default class PaymentCardTextField extends Component {
     numberPlaceholder: PropTypes.string,
 
     onChange: PropTypes.func,
+    onParamsChange: PropTypes.func,
     onValueChange: PropTypes.func,
     onEndEditing: PropTypes.func,
   }
 
   static defaultProps = {
     ...View.defaultProps,
+    onParamsChange: () => {},
     onEndEditing: () => {},
   }
 
