@@ -34,10 +34,12 @@ export default class PaymentCardTextField extends Component {
 
     onChange: PropTypes.func,
     onValueChange: PropTypes.func,
+    onEndEditing: PropTypes.func,
   }
 
   static defaultProps = {
     ...View.defaultProps,
+    onEndEditing: () => {},
   }
 
   valid = false // eslint-disable-line react/sort-comp
@@ -68,6 +70,18 @@ export default class PaymentCardTextField extends Component {
 
   handlePress = () => {
     this.focus()
+  }
+
+  handleEndEditing = (event) => {
+    const { onEndEditing } = this.props
+    const { nativeEvent } = event
+
+    if (onEndEditing) {
+      onEndEditing(
+        nativeEvent.valid,
+        nativeEvent.params
+      )
+    }
   }
 
   handleChange = (event) => {
@@ -123,6 +137,7 @@ export default class PaymentCardTextField extends Component {
           enabled={!disabled}
           {...rest}
           onChange={this.handleChange}
+          onEndEditing={this.handleEndEditing}
         />
       </TouchableWithoutFeedback>
     )
@@ -152,5 +167,6 @@ const NativePaymentCardTextField = requireNativeComponent('CreditCardForm', Paym
     fontSize: true,
     enabled: true,
     onChange: true,
+    onEndEditing: true,
   },
 })

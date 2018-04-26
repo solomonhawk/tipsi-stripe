@@ -12,6 +12,7 @@
 @interface TPSCardField : UIView
 
 @property (nonatomic, copy) RCTBubblingEventBlock onChange;
+@property (nonatomic, copy) RCTBubblingEventBlock onEndEditing;
 @property (nonatomic, strong) UIFont *font;
 @property(nonatomic, strong) UIColor *textColor;
 @property(nonatomic, strong) UIColor *textErrorColor;
